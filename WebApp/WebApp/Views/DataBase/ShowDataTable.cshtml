@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebApp.Models.DataBaseItem>
+
+@{
+    ViewData["Title"] = "Sensors";
+}
+
+<h1>Data from Sensors</h1>
+
+<table class="table">
+    <thead>
+        <th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SensorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+        </th>
+    </thead>
+
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <th>
+                <td>
+                    @Html.DisplayNameFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(modelItem => item.SensorName)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(modelItem => item.DataType)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(modelItem => item.Date)
+                </td>
+            </th>
+        }
+    </tbody>
+</table>

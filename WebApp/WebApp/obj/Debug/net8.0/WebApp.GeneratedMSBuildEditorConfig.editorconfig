@@ -18,12 +18,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\mag_3_sem\Distributed Apps\IoT_WebApp\WebApp\WebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/mag_3_sem/Distributed Apps/IoT_WebApp/WebApp/WebApp/Views/DataBase/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGF0YUJhc2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/mag_3_sem/Distributed Apps/IoT_WebApp/WebApp/WebApp/Views/DataBase/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGF0YUJhc2VcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/mag_3_sem/Distributed Apps/IoT_WebApp/WebApp/WebApp/Views/DataBase/ShowDataTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGF0YUJhc2VcU2hvd0RhdGFUYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/mag_3_sem/Distributed Apps/IoT_WebApp/WebApp/WebApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/mag_3_sem/Distributed Apps/IoT_WebApp/WebApp/WebApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/mag_3_sem/Distributed Apps/IoT_WebApp/WebApp/WebApp/Views/Home/ShowDataTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93RGF0YVRhYmxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/mag_3_sem/Distributed Apps/IoT_WebApp/WebApp/WebApp/Views/Shared/Error.cshtml]

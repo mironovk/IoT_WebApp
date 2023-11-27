@@ -25,13 +25,13 @@ namespace WebApp.Controllers
             return View(db.GetItems());
         }
 
-        private DataTable ConvertToDataTable(List<DataBaseItem> Lst) 
+        private DataTable ConvertToDataTable(List<DataBaseItem> Lst)
         {
             PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(DataBaseItem));
 
-            DataTable table =new DataTable();
+            DataTable table = new DataTable();
 
-            foreach(PropertyDescriptor property in properties)
+            foreach (PropertyDescriptor property in properties)
             {
                 table.Columns.Add(property.Name, Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
             }
@@ -40,7 +40,7 @@ namespace WebApp.Controllers
             {
                 DataRow row = table.NewRow();
 
-                foreach(PropertyDescriptor property in properties)
+                foreach (PropertyDescriptor property in properties)
                 {
                     row[property.Name] = property.GetValue(item);
                 }
@@ -48,7 +48,5 @@ namespace WebApp.Controllers
             }
             return table;
         }
-
     }
-
 }

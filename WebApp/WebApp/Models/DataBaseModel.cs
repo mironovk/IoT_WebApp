@@ -2,99 +2,102 @@
 
 namespace WebApp.Models
 {
-    String connectionString = "Server=192.168.31.245;User ID=reader;Password=reader;Database=SENSOR_DB";
-    this.
     public class DataBaseModel
     {
-    }
+        String connectionString = "Server=192.168.31.229;User ID=reader;Password=reader;Database=SENSOR_DB";
 
-    public List<DataBaseItem> GetItems()
-    {
-        List<DataBaseItem> resultList = new List<DataBaseItem>();
-
-        using (MySqlConnection connection = new MySqlConnection(this.connectionString))
+        public DataBaseModel() 
         {
-            connection.Open();
-            String selectSqlCmd = "SELECT * FROM " + "SENSOR_DATA_TABLE";
-            MySqlCommand cmd = new MySqlCommand(selectSqlCmd, connection);
+            //this.connectionString = Configuration["ConnectionStrings:Default"];
+            //this.connectionString = ConfigurationBinder.GetValue();
+        }  
+        public List<DataBaseItem> GetItems()
+        {
+            List<DataBaseItem> resultList = new List<DataBaseItem>();
 
-            using(MySqlDataReader reader = cmd.ExecuteReader())
+            using (MySqlConnection connection = new MySqlConnection(this.connectionString))
             {
-                while (reader.Read())
+                connection.Open();
+                String selectSqlCmd = "SELECT * FROM " + "SENSOR_DATA_TABLE";
+                MySqlCommand cmd = new MySqlCommand(selectSqlCmd, connection);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                    DataBaseItem item = new DataBaseItem();
+                    while (reader.Read())
+                    {
+                        DataBaseItem item = new DataBaseItem();
 
-                    item.Id = Convert.ToInt32(reader["ID"]);
-                    item.SensorName = Convert.ToString(reader["SensorName"]);
-                    item.DataType = Convert.ToString(reader["DataType"]);
-                    item.Position = Convert.ToString(reader["Position"]);
-                    item.Value = Convert.ToString(reader["Value"]);
-                    item.Date = Convert.ToString(reader["Date"]);
+                        item.Id = Convert.ToInt32(reader["ID"]);
+                        item.SensorName = Convert.ToString(reader["SensorName"]);
+                        item.DataType = Convert.ToString(reader["DataType"]);
+                        item.Position = Convert.ToString(reader["Position"]);
+                        item.Value = Convert.ToString(reader["Value"]);
+                        item.Date = Convert.ToString(reader["Date"]);
 
-                    resultList.Add(item);
+                        resultList.Add(item);
+                    }
                 }
             }
+
+            return resultList;
         }
 
-        return resultList;
-    }
-
-    public Int32 GetNumberOfItems()
-    {
-        Int32 numOfItems = 0;
-
-        using (MySqlConnection connection = new MySqlConnection(this.connectionString))
+        public Int32 GetNumberOfItems()
         {
-            connection.Open();
+            Int32 numOfItems = 0;
 
-            String selectCmd = "SELECT COUTN(*) FROM " + "SENSOR_DATA_TABLE";
-
-            MySqlCommand cmd = new MySqlCommand(selectCmd, connection);
-
-            using (MySqlDataReader reader = cmd.ExecuteReader())
+            using (MySqlConnection connection = new MySqlConnection(this.connectionString))
             {
-                while (reader.Read())
+                connection.Open();
+
+                String selectCmd = "SELECT COUNT(*) FROM " + "SENSOR_DATA_TABLE";
+
+                MySqlCommand cmd = new MySqlCommand(selectCmd, connection);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                    numOfItems = Convert.ToInt32(reader[0]);
+                    while (reader.Read())
+                    {
+                        numOfItems = Convert.ToInt32(reader[0]);
+                    }
                 }
             }
-
             return numOfItems;
         }
-    }
 
-    public List<DataBaseItem> GetSensorItems(String SensorName, String DataType, String Position)
-    {
-        List<DataBaseItem> resultList = new List<DataBaseItem>();
-
-        using (MySqlConnection connection = new MySqlConnection(this.connectionString))
+        public List<DataBaseItem> GetSensorItems(String SensorName, String DataType, String Position)
         {
-            connection.Open();
-            String selectSqlCmd = "SELECT * FROM " + "SENSOR_DATA_TABLE" + 
-                                    " WHERE (SensorName = '" + SensorName + "')" + 
-                                    " AND (DataType = '" + DataType + "')" + 
-                                    " AND (Position = '" + Position + "');";
+            List<DataBaseItem> resultList = new List<DataBaseItem>();
 
-            MySqlCommand cmd = new MySqlCommand(selectSqlCmd, connection);
-
-            using (MySqlDataReader reader = cmd.ExecuteReader())
+            using (MySqlConnection connection = new MySqlConnection(this.connectionString))
             {
-                while (reader.Read())
+                connection.Open();
+                String selectSqlCmd = "SELECT * FROM " + "SENSOR_DATA_TABLE" +
+                                        " WHERE (SensorName = '" + SensorName + "')" +
+                                        " AND (DataType = '" + DataType + "')" +
+                                        " AND (Position = '" + Position + "');";
+
+                MySqlCommand cmd = new MySqlCommand(selectSqlCmd, connection);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                    DataBaseItem item = new DataBaseItem();
+                    while (reader.Read())
+                    {
+                        DataBaseItem item = new DataBaseItem();
 
-                    item.Id = Convert.ToInt32(reader["ID"]);
-                    item.SensorName = Convert.ToString(reader["SensorName"]);
-                    item.DataType = Convert.ToString(reader["DataType"]);
-                    item.Position = Convert.ToString(reader["Position"]);
-                    item.Value = Convert.ToString(reader["Value"]);
-                    item.Date = Convert.ToString(reader["Date"]);
+                        item.Id = Convert.ToInt32(reader["ID"]);
+                        item.SensorName = Convert.ToString(reader["SensorName"]);
+                        item.DataType = Convert.ToString(reader["DataType"]);
+                        item.Position = Convert.ToString(reader["Position"]);
+                        item.Value = Convert.ToString(reader["Value"]);
+                        item.Date = Convert.ToString(reader["Date"]);
 
-                    resultList.Add(item);
+                        resultList.Add(item);
+                    }
                 }
             }
-        }
 
-        return resultList;
+            return resultList;
+        }
     }
 }

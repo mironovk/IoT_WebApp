@@ -29,3 +29,6 @@ D:\mag_3_sem\Distributed Apps\IoT_WebApp\WebApp\WebApp\obj\Debug\net8.0\refint\W
 D:\mag_3_sem\Distributed Apps\IoT_WebApp\WebApp\WebApp\obj\Debug\net8.0\WebApp.pdb
 D:\mag_3_sem\Distributed Apps\IoT_WebApp\WebApp\WebApp\obj\Debug\net8.0\WebApp.genruntimeconfig.cache
 D:\mag_3_sem\Distributed Apps\IoT_WebApp\WebApp\WebApp\obj\Debug\net8.0\ref\WebApp.dll
+D:\mag_3_sem\Distributed Apps\IoT_WebApp\WebApp\WebApp\obj\Debug\net8.0\WebApp.csproj.AssemblyReference.cache
+D:\mag_3_sem\Distributed Apps\IoT_WebApp\WebApp\WebApp\bin\Debug\net8.0\MySqlConnector.dll
+D:\mag_3_sem\Distributed Apps\IoT_WebApp\WebApp\WebApp\obj\Debug\net8.0\WebApp.csproj.CopyComplete
