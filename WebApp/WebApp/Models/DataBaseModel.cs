@@ -1,15 +1,19 @@
 ﻿using MySqlConnector;
+using System.Runtime.CompilerServices;
 
 namespace WebApp.Models
 {
     public class DataBaseModel
     {
         String connectionString = "Server=192.168.31.229;User ID=reader;Password=reader;Database=SENSOR_DB";
-
+        
         public DataBaseModel() 
         {
+            //this.
+            //this.connectionString = Configuration.GetConnectionString
             //this.connectionString = Configuration["ConnectionStrings:Default"];
-            //this.connectionString = ConfigurationBinder.GetValue();
+            //this.connectionString = IConfiguration.GetValue<string>("ConnectionStrings:Default");
+            this.connectionString = ConfigurationPath.GetSectionKey("ConnectionStrings:Default");
         }  
         public List<DataBaseItem> GetItems()
         {

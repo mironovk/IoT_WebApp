@@ -6,7 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.Add(new ServiceDescriptor(typeof(DataBaseModel), new DataBaseModel()));
-
+//builder.Services.AddOptions();
+//builder.Services.Configure<>
+////var section = ConfigurationBuilder.ReferenceEquals()
+//var section = ConfigurationBinder.GetValue("ConnectionStrings");
+//services.AddConfiguration();
 
 var app = builder.Build();
 
@@ -29,5 +33,5 @@ app.MapControllerRoute(
     name: "default",
     //pattern: "{controller=Home}/{action=Index}/{id?}");
     pattern: "{controller=DataBase}/{action=Index}/{id?}");
-
+//app.Configuration.GetValue()
 app.Run();
