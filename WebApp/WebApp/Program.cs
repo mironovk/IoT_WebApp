@@ -1,7 +1,12 @@
+using WebApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.Add(new ServiceDescriptor(typeof(DataBaseModel), new DataBaseModel()));
+builder
 
 var app = builder.Build();
 
@@ -22,6 +27,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+    //pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=DataBase}/{action=Index}/{id?}");
 app.Run();

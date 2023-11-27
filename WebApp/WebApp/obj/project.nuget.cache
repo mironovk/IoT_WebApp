@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UK4326PKlp4yjQDWXRbCwphXJ+ZnJybqJ4QJhMGqrD/K819/Row+7TslAc+hOdFQAnwOB0LmIS2w0PO7g5AH+w==",
+  "dgSpecHash": "byksLpv97WWp+gaBthxoyy7zmSODlNGhsNP5dvjycLDCl/kqiNUVC2EZ0w1A+vitNE5ddQEyXXZE/QWgVjzWjA==",
   "success": true,
   "projectFilePath": "D:\\mag_3_sem\\Distributed Apps\\IoT_WebApp\\WebApp\\WebApp\\WebApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\kimbo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\kimbo\\.nuget\\packages\\mysqlconnector\\2.3.1\\mysqlconnector.2.3.1.nupkg.sha512"
+  ],
   "logs": []
 }
