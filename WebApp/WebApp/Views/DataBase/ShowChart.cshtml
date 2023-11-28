@@ -1,0 +1,44 @@
+﻿@model List<DataBaseItem>
+@{
+    ViewData["Title"] = "Sensor Data Chart";
+}
+
+<div id="chart"></div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load('current', { 'package': ['corechart'] });
+        google.charts.setOnLoadCallback(DrawChart);
+
+        function DrawChart() {
+            var Data = JSON.parse('@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model))');
+            var data = new google.visualization.DataTable();
+            
+            data.addColumn('datetime', 'Time');
+            data.addColumn('number', '@Html.Raw(System.Web.HttpUtility.JavaScriptStringEncode(Model[0].DataType))');
+
+            for (var i = 0; i < Data.length; i++) {
+                [date, _time] = Data[i].Date.split(' ');
+                [day, month, year] = date.split('.');
+                [hour, min, sec] = _time.split(':');
+
+                time = new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hour) + parseInt(delta), parseInt(min), parseInt(sec));
+                val = parseFloat(Data[i].Value.replace(",", "."));
+                data.addRow([time, val]);
+            }
+
+            var options = {
+                title: '@Html.Raw(System.Web.HttpUtility.JavaScriptStringEncode("Data from " + Model[0].SensorName + " in position" + Model[0].Position))',
+                innerHeight: 700,
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart'));
+            chart.draw(data, options);
+        }
+    </script>
+}

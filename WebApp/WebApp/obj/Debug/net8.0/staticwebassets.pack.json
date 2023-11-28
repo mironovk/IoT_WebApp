@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\mag_3_sem\\Distributed Apps\\IoT_WebApp\\WebApp\\WebApp\\wwwroot\\images\\SaveToExcelImage.png",
+      "PackagePath": "staticwebassets\\images\\SaveToExcelImage.png"
+    },
+    {
+      "Id": "D:\\mag_3_sem\\Distributed Apps\\IoT_WebApp\\WebApp\\WebApp\\wwwroot\\images\\SaveToExcelImage_28x.jpg",
+      "PackagePath": "staticwebassets\\images\\SaveToExcelImage_28x.jpg"
+    },
+    {
+      "Id": "D:\\mag_3_sem\\Distributed Apps\\IoT_WebApp\\WebApp\\WebApp\\wwwroot\\images\\SaveToXmlImage.png",
+      "PackagePath": "staticwebassets\\images\\SaveToXmlImage.png"
+    },
+    {
+      "Id": "D:\\mag_3_sem\\Distributed Apps\\IoT_WebApp\\WebApp\\WebApp\\wwwroot\\images\\SaveToXmlImage_16x.png",
+      "PackagePath": "staticwebassets\\images\\SaveToXmlImage_16x.png"
+    },
+    {
       "Id": "D:\\mag_3_sem\\Distributed Apps\\IoT_WebApp\\WebApp\\WebApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

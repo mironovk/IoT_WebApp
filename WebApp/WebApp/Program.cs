@@ -11,7 +11,7 @@ builder.Services.Add(new ServiceDescriptor(typeof(DataBaseModel), new DataBaseMo
 ////var section = ConfigurationBuilder.ReferenceEquals()
 //var section = ConfigurationBinder.GetValue("ConnectionStrings");
 //services.AddConfiguration();
-
+//var config = new IConfiguration
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

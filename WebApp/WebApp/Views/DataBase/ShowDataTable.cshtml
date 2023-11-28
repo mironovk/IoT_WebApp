@@ -8,9 +8,9 @@
 
 <table class="table">
     <thead>
-        <th>
+        <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.DisplayNameFor(model => model.ID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SensorName)
@@ -27,32 +27,32 @@
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
-        </th>
+        </tr>
     </thead>
 
     <tbody>
         @foreach(var item in Model)
         {
-            <th>
+            <tr>
                 <td>
-                    @Html.DisplayNameFor(modelItem => item.Id)
+                    @Html.DisplayFor(modelItem => item.ID)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(modelItem => item.SensorName)
+                    @Html.DisplayFor(modelItem => item.SensorName)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(modelItem => item.DataType)
+                    @Html.DisplayFor(modelItem => item.DataType)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(modelItem => item.Position)
+                    @Html.DisplayFor(modelItem => item.Position)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(modelItem => item.Value)
+                    @Html.DisplayFor(modelItem => item.Value)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
-            </th>
+            </tr>
         }
     </tbody>
 </table>

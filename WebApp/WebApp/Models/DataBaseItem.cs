@@ -2,7 +2,7 @@
 {
     public class DataBaseItem
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string SensorName { get; set; }
         public string DataType { get; set; }
         public String Position { get; set; }

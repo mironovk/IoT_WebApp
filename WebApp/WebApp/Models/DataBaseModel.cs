@@ -1,5 +1,7 @@
 ﻿using MySqlConnector;
+using System.Configuration;
 using System.Runtime.CompilerServices;
+using WebApp.Controllers;
 
 namespace WebApp.Models
 {
@@ -9,11 +11,13 @@ namespace WebApp.Models
         
         public DataBaseModel() 
         {
+            //this.connectionString = Microsoft.Extensions.Configuration.JsonConfigurationExtensions
             //this.
             //this.connectionString = Configuration.GetConnectionString
             //this.connectionString = Configuration["ConnectionStrings:Default"];
             //this.connectionString = IConfiguration.GetValue<string>("ConnectionStrings:Default");
-            this.connectionString = ConfigurationPath.GetSectionKey("ConnectionStrings:Default");
+            //this.connectionString = ConfigurationPath.GetSectionKey("ConnectionStrings:Default");
+            //this.connectionString = ConfigurationPath.GetParentPath("ConnectionStrings:Default");
         }  
         public List<DataBaseItem> GetItems()
         {
@@ -22,7 +26,7 @@ namespace WebApp.Models
             using (MySqlConnection connection = new MySqlConnection(this.connectionString))
             {
                 connection.Open();
-                String selectSqlCmd = "SELECT * FROM " + "SENSOR_DATA_TABLE";
+                String selectSqlCmd = "SELECT * FROM " + "SENSOR_DATA_TABLE;";
                 MySqlCommand cmd = new MySqlCommand(selectSqlCmd, connection);
 
                 using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -31,7 +35,7 @@ namespace WebApp.Models
                     {
                         DataBaseItem item = new DataBaseItem();
 
-                        item.Id = Convert.ToInt32(reader["ID"]);
+                        item.ID = Convert.ToInt32(reader["ID"]);
                         item.SensorName = Convert.ToString(reader["SensorName"]);
                         item.DataType = Convert.ToString(reader["DataType"]);
                         item.Position = Convert.ToString(reader["Position"]);
@@ -54,7 +58,7 @@ namespace WebApp.Models
             {
                 connection.Open();
 
-                String selectCmd = "SELECT COUNT(*) FROM " + "SENSOR_DATA_TABLE";
+                String selectCmd = "SELECT COUNT(*) FROM " + "SENSOR_DATA_TABLE;";
 
                 MySqlCommand cmd = new MySqlCommand(selectCmd, connection);
 
@@ -89,7 +93,7 @@ namespace WebApp.Models
                     {
                         DataBaseItem item = new DataBaseItem();
 
-                        item.Id = Convert.ToInt32(reader["ID"]);
+                        item.ID = Convert.ToInt32(reader["ID"]);
                         item.SensorName = Convert.ToString(reader["SensorName"]);
                         item.DataType = Convert.ToString(reader["DataType"]);
                         item.Position = Convert.ToString(reader["Position"]);

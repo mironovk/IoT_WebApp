@@ -118,5 +118,30 @@ namespace WebApp.Controllers
                 return File(data, "application/xml", "SensorsData.xml");
             }
         }
+
+        ///////////////////////////////////////////// Select from DB /////////////////////////////////////////////
+        [HttpGet]
+        public IActionResult Select()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Select(DataBaseItem item)
+        {
+            return RedirectToAction("ShowChart", item);
+        }
+
+        public IActionResult ShowChart(DataBaseItem item)
+        {
+            CultureInfo ci = new CultureInfo("ru-RU");
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
+
+            DataBaseModel db = HttpContext.RequestServices.GetService(typeof(DataBaseModel)) as DataBaseModel;
+
+            return View(db.GetSensorItems(item.SensorName, item.DataType, item.Position));
+        }
+
     }
 }
