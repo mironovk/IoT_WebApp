@@ -3,6 +3,8 @@
     ViewData["Title"] = "Sensor Data Chart";
 }
 
+<h1>@ViewData["Title"]</h1>
+
 <div id="chart"></div>
 
 @section Scripts
@@ -10,7 +12,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script type="text/javascript">
-        google.charts.load('current', { 'package': ['corechart'] });
+        google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(DrawChart);
 
         function DrawChart() {
@@ -25,7 +27,7 @@
                 [day, month, year] = date.split('.');
                 [hour, min, sec] = _time.split(':');
 
-                time = new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hour) + parseInt(delta), parseInt(min), parseInt(sec));
+                time = new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hour), parseInt(min), parseInt(sec));
                 val = parseFloat(Data[i].Value.replace(",", "."));
                 data.addRow([time, val]);
             }
