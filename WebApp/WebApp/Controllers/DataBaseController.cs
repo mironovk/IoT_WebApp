@@ -41,7 +41,14 @@ namespace WebApp.Controllers
 
             foreach (PropertyDescriptor property in properties)
             {
-                table.Columns.Add(property.Name, Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
+                if (property.Name == "StartDate" || property.Name == "EndDate" || property.Name == "Save")
+                {
+                    continue;
+                }
+                else
+                {
+                    table.Columns.Add(property.Name, Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
+                }
             }
 
             foreach (DataBaseItem item in Lst)
@@ -50,7 +57,14 @@ namespace WebApp.Controllers
 
                 foreach (PropertyDescriptor property in properties)
                 {
-                    row[property.Name] = property.GetValue(item);
+                    if (property.Name == "StartDate" || property.Name == "EndDate" || property.Name == "Save")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        row[property.Name] = property.GetValue(item);
+                    }
                 }
                 table.Rows.Add(row);
             }
@@ -58,9 +72,17 @@ namespace WebApp.Controllers
         }
 
         ///////////////////////////////////////////// Save to Exel /////////////////////////////////////////////
-        private Byte[] GetExcelFileBinaryContent(DataBaseModel db)
+        private Byte[] GetExcelFileBinaryContent(DataBaseModel db, int full, DataBaseItem item)
         {
-            List<DataBaseItem> lstItems = db.GetItems();
+            List<DataBaseItem> lstItems;
+            if (full == 1)
+            {
+                lstItems = db.GetItems();
+            }
+            else
+            {
+                lstItems = db.GetSensorItems(item.SensorName, item.DataType, item.Position, item.StartDate, item.EndDate);
+            }
 
             DataTable dt = this.ConvertToDataTable(lstItems);
 
@@ -94,17 +116,18 @@ namespace WebApp.Controllers
 
             return ms.ToArray();
         }
+
         public IActionResult SaveToExcelFile() 
         {
-            DataBaseModel db = HttpContext.RequestServices.GetService(typeof(WebApp.Models.DataBaseModel)) as DataBaseModel;
-
-            Byte[] data = this.GetExcelFileBinaryContent(db);
+            DataBaseModel db  = HttpContext.RequestServices.GetService(typeof(WebApp.Models.DataBaseModel)) as DataBaseModel;
+            DataBaseItem item = new DataBaseItem();
+            Byte[] data = this.GetExcelFileBinaryContent(db, 1, item);
 
             return File(data, "application/xlsx", "SensorsData.xlsx"); 
         }
 
-        ///////////////////////////////////////////// Save to XML /////////////////////////////////////////////
-        public IActionResult SaveToXmlFile()
+		///////////////////////////////////////////// Save to XML /////////////////////////////////////////////
+		public IActionResult SaveToXmlFile()
         {
             DataBaseModel db = HttpContext.RequestServices.GetService(typeof(WebApp.Models.DataBaseModel)) as DataBaseModel;
 
@@ -129,7 +152,28 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Select(DataBaseItem item)
         {
-            return RedirectToAction("ShowChart", item);
+            if (item.Save == "Show сhart")
+            {
+                return RedirectToAction("ShowChart", item);
+            }
+            else if (item.Save == "Save in Excel-file")
+            {
+                DataBaseModel db = HttpContext.RequestServices.GetService(typeof(WebApp.Models.DataBaseModel)) as DataBaseModel;
+                Byte[] data = this.GetExcelFileBinaryContent(db, 0, item);
+                return File(data, "application/xlsx", "SensorsData.xlsx");
+            }
+            else 
+            {
+                DataBaseModel db = HttpContext.RequestServices.GetService(typeof(WebApp.Models.DataBaseModel)) as DataBaseModel;
+                List<DataBaseItem> lst = db.GetSensorItems(item.SensorName, item.DataType, item.Position, item.StartDate, item.EndDate);
+                using (StringWriter sw = new StringWriter(new StringBuilder()))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<DataBaseItem>));
+                    xmlSerializer.Serialize(sw, lst);
+                    Byte[] data = Encoding.Unicode.GetBytes(sw.ToString());
+                    return File(data, "application/xml", "SensorsData.xml");
+                }
+            }
         }
 
         public IActionResult ShowChart(DataBaseItem item)

@@ -157,7 +157,6 @@ namespace WebApp.Models
                                         " WHERE (SensorName = '" + SensorName + "' AND " + 
                                         "Date >= '" + StartDate + "' AND " +
                                         "Date <= '" + EndDate + "')" +
-                                        //"WHERE Date >= '" + StartDate + 
                                         " AND (DataType = '" + DataType + "')" +
                                         " AND (Position = '" + Position + "')" + 
                                         ";";

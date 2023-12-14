@@ -29,13 +29,13 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="StartDate" class="control-label">StartDate (yyyy-mm-dd hh:mm:ss)</label>
+                <label asp-for="StartDate" class="control-label">Start Date (yyyy-mm-dd hh:mm:ss)</label>
                 <input asp-for="StartDate" class="form-control" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="EndDate" class="control-label">EndDate (yyyy-mm-dd hh:mm:ss)</label>
+                <label asp-for="EndDate" class="control-label">End Date (yyyy-mm-dd hh:mm:ss)</label>
                 <input asp-for="EndDate" class="form-control" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
@@ -43,8 +43,20 @@
             <br />
 
             <div class="form-group">
-                <input type="submit" value="Show Chart" class="btn btn-primary" />
+                <input type="submit" value="Show сhart" class="btn btn-primary" asp-for="Save" />
             </div>
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Save in Excel-file" class="btn btn-primary" asp-for="Save" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Save in XML-file" class="btn btn-primary" asp-for="Save" />
+            </div>
+            <br />
         </form>
+
     </div>
 </div>
