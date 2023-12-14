@@ -140,7 +140,7 @@ namespace WebApp.Controllers
 
             DataBaseModel db = HttpContext.RequestServices.GetService(typeof(DataBaseModel)) as DataBaseModel;
 
-            return View(db.GetSensorItems(item.SensorName, item.DataType, item.Position));
+            return View(db.GetSensorItems(item.SensorName, item.DataType, item.Position, item.StartDate, item.EndDate));
         }
 
     }
