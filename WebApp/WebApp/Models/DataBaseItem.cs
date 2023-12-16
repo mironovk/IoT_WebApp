@@ -8,5 +8,9 @@
         public String Position { get; set; }
         public string Value { get; set; }
         public string Date { get; set; }
+
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string Save { get; set; }
     }
 }

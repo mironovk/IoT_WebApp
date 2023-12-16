@@ -145,7 +145,7 @@ namespace WebApp.Models
             return numOfItems;
         }
 
-        public List<DataBaseItem> GetSensorItems(String SensorName, String DataType, String Position)
+        public List<DataBaseItem> GetSensorItems(String SensorName, String DataType, String Position, String StartDate, String EndDate)
         {
             List<DataBaseItem> resultList = new List<DataBaseItem>();
             get_connetction_string();
@@ -153,10 +153,13 @@ namespace WebApp.Models
             using (MySqlConnection connection = new MySqlConnection(this.connectionString))
             {
                 connection.Open();
-                String selectSqlCmd = "SELECT * FROM " + "SENSOR_DATA_TABLE" +
-                                        " WHERE (SensorName = '" + SensorName + "')" +
+                String selectSqlCmd = "SELECT * FROM " + "SENSOR_DATA_TABLE " +
+                                        " WHERE (SensorName = '" + SensorName + "' AND " + 
+                                        "Date >= '" + StartDate + "' AND " +
+                                        "Date <= '" + EndDate + "')" +
                                         " AND (DataType = '" + DataType + "')" +
-                                        " AND (Position = '" + Position + "');";
+                                        " AND (Position = '" + Position + "')" + 
+                                        ";";
 
                 MySqlCommand cmd = new MySqlCommand(selectSqlCmd, connection);
 
