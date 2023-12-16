@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\mag_3_sem\Distributed Apps\WebApp</_PublishTargetUrl>
+    <History>True|2023-12-16T21:36:37.5453805Z;True|2023-12-17T00:31:23.6003562+03:00;True|2023-12-17T00:25:47.4525610+03:00;True|2023-12-17T00:03:40.8029675+03:00;True|2023-12-16T23:49:47.0587295+03:00;True|2023-12-16T22:39:03.0807125+03:00;True|2023-12-16T22:06:53.6043220+03:00;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+</Project>
