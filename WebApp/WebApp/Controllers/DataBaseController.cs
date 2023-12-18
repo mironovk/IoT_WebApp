@@ -25,12 +25,14 @@ namespace WebApp.Controllers
 
             return View(db.GetNumberOfItems());
         }
-
-        public IActionResult ShowDataTable() 
+        public IActionResult ShowDataTable()
         {
             DataBaseModel db = HttpContext.RequestServices.GetService(typeof(WebApp.Models.DataBaseModel)) as DataBaseModel;
-
             return View(db.GetItems());
+        }
+        public IActionResult ShowDataTable2(DataBaseItem item) 
+        {
+            return View(item);
         }
 
         private DataTable ConvertToDataTable(List<DataBaseItem> Lst)
@@ -162,7 +164,13 @@ namespace WebApp.Controllers
                 Byte[] data = this.GetExcelFileBinaryContent(db, 0, item);
                 return File(data, "application/xlsx", "SensorsData.xlsx");
             }
-            else 
+            else if (item.Save == "Show table")
+            {
+                DataBaseModel db = HttpContext.RequestServices.GetService(typeof(WebApp.Models.DataBaseModel)) as DataBaseModel;
+                List<DataBaseItem> lst = db.GetSensorItems(item.SensorName, item.DataType, item.Position, item.StartDate, item.EndDate);
+                return View("ShowDataTable2", lst);
+            }
+            else
             {
                 DataBaseModel db = HttpContext.RequestServices.GetService(typeof(WebApp.Models.DataBaseModel)) as DataBaseModel;
                 List<DataBaseItem> lst = db.GetSensorItems(item.SensorName, item.DataType, item.Position, item.StartDate, item.EndDate);

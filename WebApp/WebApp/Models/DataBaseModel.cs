@@ -82,7 +82,7 @@ namespace WebApp.Models
 
         public void get_connetction_string()
         {
-            ReadAndParseJson parser = new ReadAndParseJson(".\\appsettings.json");
+            ReadAndParseJson parser = new ReadAndParseJson("./appsettings.json");
             ConnectionSettings connection_settings = new ConnectionSettings();
             connection_settings = parser.readjson();
             this.connectionString = "Server=" + connection_settings.ip + ";User ID=" + connection_settings.user +
